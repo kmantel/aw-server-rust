@@ -10,7 +10,7 @@
 #
 # Now aw-server-rust should be running, you can now start whatever
 # ActivityWatch watchers you desire and can find the WebUI at
-# http://localhost:5600
+# http://localhost:5601
 #
 
 [Service]

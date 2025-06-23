@@ -122,7 +122,7 @@ pub mod android {
             info!("Using server_state:: device_id: {}", server_state.device_id);
 
             let mut server_config: AWConfig = AWConfig::default();
-            server_config.port = 5600;
+            server_config.port = 5601;
 
             endpoints::build_rocket(server_state, server_config)
                 .launch()

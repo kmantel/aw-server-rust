@@ -167,19 +167,19 @@ mod tests {
             .dispatch();
         assert_eq!(res.status(), Status::BadRequest);
 
-        // If Host header is 127.0.0.1:5600 we should get OK
+        // If Host header is 127.0.0.1:5601 we should get OK
         let res = client
             .get("/api/0/info")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), Status::Ok);
 
-        // If Host header is localhost:5600 we should get OK
+        // If Host header is localhost:5601 we should get OK
         let res = client
             .get("/api/0/info")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "localhost:5600"))
+            .header(Header::new("Host", "localhost:5601"))
             .dispatch();
         assert_eq!(res.status(), Status::Ok);
 

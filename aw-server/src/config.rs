@@ -89,9 +89,9 @@ fn default_testing() -> bool {
 
 fn default_port() -> u16 {
     if is_testing() {
-        5666
+        5667
     } else {
-        5600
+        5601
     }
 }
 

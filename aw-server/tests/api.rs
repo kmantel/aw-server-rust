@@ -38,7 +38,7 @@ mod api_tests {
         let mut res = client
             .get("/api/0/buckets/")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let buckets: HashMap<String, Bucket> =
@@ -49,7 +49,7 @@ mod api_tests {
         res = client
             .get("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::NotFound);
 
@@ -57,7 +57,7 @@ mod api_tests {
         res = client
             .post("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "id": "id",
@@ -73,7 +73,7 @@ mod api_tests {
         res = client
             .post("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "id": "id",
@@ -93,7 +93,7 @@ mod api_tests {
         res = client
             .get("/api/0/buckets/")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let buckets: HashMap<String, Bucket> =
@@ -112,7 +112,7 @@ mod api_tests {
         res = client
             .get("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         // Validate output
@@ -129,7 +129,7 @@ mod api_tests {
         res = client
             .get("/api/0/buckets/invalid_bucket")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::NotFound);
 
@@ -137,7 +137,7 @@ mod api_tests {
         res = client
             .delete("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
 
@@ -145,7 +145,7 @@ mod api_tests {
         res = client
             .get("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::NotFound);
 
@@ -153,7 +153,7 @@ mod api_tests {
         let res = client
             .get("/api/0/buckets/")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let buckets: HashMap<String, Bucket> =
@@ -170,7 +170,7 @@ mod api_tests {
         let res = client
             .post("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "id": "id",
@@ -186,7 +186,7 @@ mod api_tests {
         let res = client
             .post("/api/0/buckets/id/events")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"[{
                 "timestamp": "2018-01-01T01:01:01Z",
@@ -205,7 +205,7 @@ mod api_tests {
         let res = client
             .get("/api/0/buckets/id/events")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         assert_eq!(
@@ -217,7 +217,7 @@ mod api_tests {
         let res = client
             .post("/api/0/buckets/id/heartbeat?pulsetime=2")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "timestamp": "2018-01-01T01:01:02Z",
@@ -236,7 +236,7 @@ mod api_tests {
         let res = client
             .get("/api/0/buckets/id/events")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         assert_eq!(
@@ -247,14 +247,14 @@ mod api_tests {
         // Delete event
         client
             .delete("/api/0/buckets/id/events/1")
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
 
         // Get eventcount
         let res = client
             .get("/api/0/buckets/id/events/count")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         assert_eq!(res.into_string().unwrap(), "0");
@@ -263,7 +263,7 @@ mod api_tests {
         let res = client
             .delete("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
     }
@@ -277,7 +277,7 @@ mod api_tests {
         let res = client
             .post("/api/0/import")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{"buckets":
             {"id1": {
@@ -300,7 +300,7 @@ mod api_tests {
         let res = client
             .post("/api/0/import")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{"buckets":
             {"id1": {
@@ -326,7 +326,7 @@ mod api_tests {
         let res = client
             .get("/api/0/buckets/id1/export")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let export: BucketsExport = serde_json::from_str(&res.into_string().unwrap()).unwrap();
@@ -335,7 +335,7 @@ mod api_tests {
         let res = client
             .delete("/api/0/buckets/id1")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
 
@@ -362,7 +362,7 @@ mod api_tests {
                 "Content-Type",
                 "multipart/form-data; boundary=a",
             ))
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(&sum[..])
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
@@ -371,7 +371,7 @@ mod api_tests {
         let res = client
             .get("/api/0/buckets/id1")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         println!("{:?}", res.into_string());
@@ -380,7 +380,7 @@ mod api_tests {
         let res = client
             .get("/api/0/export")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let export: BucketsExport = serde_json::from_str(&res.into_string().unwrap()).unwrap();
@@ -401,7 +401,7 @@ mod api_tests {
         let res = client
             .post("/api/0/query")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "timeperiods": ["2000-01-01T00:00:00Z/2020-01-01T00:00:00Z"],
@@ -416,7 +416,7 @@ mod api_tests {
         let res = client
             .post("/api/0/buckets/id")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "id": "id",
@@ -432,7 +432,7 @@ mod api_tests {
         let res = client
             .post("/api/0/buckets/id/events")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"[{
                 "timestamp": "2018-01-01T01:01:01Z",
@@ -447,7 +447,7 @@ mod api_tests {
         let res = client
             .post("/api/0/query")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "timeperiods": ["2000-01-01T00:00:00Z/2020-01-01T00:00:00Z"],
@@ -465,7 +465,7 @@ mod api_tests {
         let res = client
             .post("/api/0/query")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(
                 r#"{
                 "timeperiods": ["2000-01-01T00:00:00Z/2020-01-01T00:00:00Z"],
@@ -482,7 +482,7 @@ mod api_tests {
         let res = client
             .post(format!("/api/0/settings/{}", key))
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .body(body)
             .dispatch();
         res.status()
@@ -521,7 +521,7 @@ mod api_tests {
         let key = "non_existent_key";
         let res = client
             .get(format!("/api/0/settings/{}", key))
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         assert_eq!(res.into_string().unwrap(), "null")
@@ -542,7 +542,7 @@ mod api_tests {
 
         let res = client
             .get("/api/0/settings")
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
 
         assert_eq!(res.status(), rocket::http::Status::Ok);
@@ -566,7 +566,7 @@ mod api_tests {
         // Test getting
         let res = client
             .get(format!("/api/0/settings/{}", key))
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let deserialized: Value = serde_json::from_str(&res.into_string().unwrap()).unwrap();
@@ -586,7 +586,7 @@ mod api_tests {
 
         let res = client
             .get(format!("/api/0/settings/{}", key))
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let deserialized: Value = serde_json::from_str(&res.into_string().unwrap()).unwrap();
@@ -606,7 +606,7 @@ mod api_tests {
 
         let res = client
             .get("/api/0/settings/test_key_dict")
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let deserialized: Value = serde_json::from_str(&res.into_string().unwrap()).unwrap();
@@ -626,7 +626,7 @@ mod api_tests {
 
         let res = client
             .get(format!("/api/0/settings/{}", key))
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         let deserialized: Value = serde_json::from_str(&res.into_string().unwrap()).unwrap();
@@ -637,7 +637,7 @@ mod api_tests {
 
         let res = client
             .get("/api/0/settings/test_key")
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
 
@@ -657,13 +657,13 @@ mod api_tests {
         // Test deleting
         let res = client
             .delete("/api/0/settings/test_key")
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
 
         let res = client
             .get("/api/0/settings/test_key")
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
         assert_eq!(res.into_string().unwrap(), "null");
@@ -677,7 +677,7 @@ mod api_tests {
         let res = client
             .options("/api/0/buckets/")
             .header(ContentType::JSON)
-            .header(Header::new("Host", "127.0.0.1:5600"))
+            .header(Header::new("Host", "127.0.0.1:5601"))
             .dispatch();
         assert_eq!(res.status(), rocket::http::Status::Ok);
     }

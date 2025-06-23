@@ -40,7 +40,7 @@ If you want to quick-compile for debugging, run cargo run from the project root:
 cargo run --bin aw-server
 ```
 
-*NOTE:* This will start aw-server-rust in testing mode (on port 5666 instead of port 5600).
+*NOTE:* This will start aw-server-rust in testing mode (on port 5667 instead of port 5601).
 
 ### Syncing
 

@@ -10,7 +10,7 @@ pub fn get_server_port(testing: bool) -> Result<u16, Box<dyn Error>> {
     // TODO: get aw-server config more reliably
     let aw_server_conf = crate::dirs::get_server_config_path(testing)
         .map_err(|_| "Could not get aw-server config path")?;
-    let fallback: u16 = if testing { 5666 } else { 5600 };
+    let fallback: u16 = if testing { 5667 } else { 5601 };
     let port = if aw_server_conf.exists() {
         let mut file = File::open(&aw_server_conf)?;
         let mut contents = String::new();
